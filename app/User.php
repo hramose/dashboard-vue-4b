@@ -2,6 +2,8 @@
 
 namespace App;
 
+//Passport
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,7 +13,7 @@ use Ultraware\Roles\Contracts\HasRoleAndPermission as HasRoleAndPermissionContra
 
 class User extends Authenticatable implements HasRoleAndPermissionContract
 {
-    use Notifiable, HasRoleAndPermission;
+    use HasApiTokens, Notifiable, HasRoleAndPermission;
 
     /**
      * The attributes that are mass assignable.
