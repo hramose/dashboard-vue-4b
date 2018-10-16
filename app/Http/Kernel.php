@@ -60,5 +60,13 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        /**
+         * Roles & Permission
+         * https://packagist.org/packages/ultraware/roles#5.7.0
+         */
+        'role' => \Ultraware\Roles\Middleware\VerifyRole::class,
+        'permission' => \Ultraware\Roles\Middleware\VerifyPermission::class,
+        'level' => \Ultraware\Roles\Middleware\VerifyLevel::class,
+        
     ];
 }

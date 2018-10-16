@@ -14,3 +14,29 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth'], function () {
+
+    /**
+     * Dashboard
+     */
+    Route::get('/dashboard', function() {
+        return "Hi! You're logged";
+    });
+
+    Route::group(['middleware' => 'role:admin'], function () {
+
+        /**
+         * Administrator
+         */
+        Route::get('/admin', function() {
+            return "Hi! You're admin";
+        });
+    });
+});
+
+

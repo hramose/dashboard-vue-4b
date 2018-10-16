@@ -160,6 +160,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Third Party Service Providers...
+         * Roles & Permissions
+         * https://packagist.org/packages/ultraware/roles#5.7.0
+         */
+        Ultraware\Roles\RolesServiceProvider::class,
     ],
 
     /*
