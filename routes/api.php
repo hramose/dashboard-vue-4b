@@ -17,14 +17,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/**
+ * Middleware Auth Apis
+ */
 Route::middleware('auth:api')->group(function() {
 
     Route::get('/roles', function() {
         return "Roles api";
     });
-});
 
-Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/permissions', function() {
         return "Permissions";
     });
