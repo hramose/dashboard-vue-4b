@@ -14,7 +14,15 @@
                         </div>
                     @endif
 
-                    You are logged in! Your name is: <b>{{$user->name}}</b>
+                    You are logged in! Your name is: <b>{{$user->name}}</b> <br>
+                    @role('admin')
+                        You are: <b>Admin</b>
+                        {{-- user has admin role --}}
+                    @endrole
+                    <br>
+                    @permission('create.users')
+                        You can: <b>Create users</b>
+                    @endpermission
                 </div>
             </div>
         </div>
