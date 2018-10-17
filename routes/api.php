@@ -18,6 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 /**
+ * Login API Passport
+ */
+Route::post('/login','Api\AuthController@login');
+Route::middleware('auth:api')->post('/logout','Api\AuthController@logout');
+
+/**
  * Middleware Auth Apis
  */
 Route::middleware('auth:api')->group(function() {
