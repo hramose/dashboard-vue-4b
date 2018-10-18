@@ -20,6 +20,9 @@ Vue.use(BootstrapVue);
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+//EventBus
+import { EventBus } from './components/EventBus.js';
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -28,7 +31,26 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('title-component', require('./components/TitleExampleComponent.vue'));
+//Dashboard
+Vue.component('sidebar-component', require('./components/dashboard/Sidebar.vue'));
+Vue.component('navbar-component', require('./components/dashboard/Navbar.vue'));
+//Home
+Vue.component('home-component', require('./components/home/Home.vue'));
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        menu: false,
+        titulo: 'Dashboard'
+    },
+    methods: {
+        changeView() {
+            console.log("Change from Sidebar");
+        }
+    },
+    mounted() {
+        EventBus.$on('showMenu', data => {
+            this.menu = !this.menu;
+        });
+    }
 });
